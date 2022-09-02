@@ -22,7 +22,7 @@ const StyledImage = styled.div`
 
 const StyledContainer = styled.div`
   background-color: #fff;
-  padding: 30px;
+  padding: 30px 70px;
 
   
   @media (min-width: ${WIDTH_BREAK}) {
@@ -31,7 +31,12 @@ const StyledContainer = styled.div`
 
   @media (max-width: ${WIDTH_BREAK}) {
     width: 100%;
+    height: 100vh;
   }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 function ImageWithSpace ({ children, image }) {
