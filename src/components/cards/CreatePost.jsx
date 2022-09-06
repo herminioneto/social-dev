@@ -4,15 +4,13 @@ import H4 from "../typography/H4"
 import Textarea from "../inputs/Textarea"
 import Button from "../inputs/Button"
 
-const PostContainer = styled.div`
+const CreatePostContainer = styled.div`
   background-color: ${props => props.theme.white};
   padding: 20px 40px;
   border-radius: 10px;
 
   @media (max-width: 670px) {
     padding: 20px;
-    width: 80%;
-    margin: 0 auto;
   }
 `
 
@@ -42,7 +40,7 @@ const BottomText = styled.div`
 
 function CreatePost () {
   return (
-    <PostContainer>
+    <CreatePostContainer>
       <H4><Title>No que você está pensando, @nick?</Title></H4>
       <TextContainer>
         <Textarea placeholder="Digite sua mensagem" rows="5" />
@@ -51,7 +49,7 @@ function CreatePost () {
         <BottomText>A sua mensagem será pública</BottomText>
         <Button>Publicar</Button>
       </BottomContainer>
-    </PostContainer>
+    </CreatePostContainer>
   )
 }
 
