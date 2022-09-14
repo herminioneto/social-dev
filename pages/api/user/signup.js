@@ -16,7 +16,7 @@ const postSchema = Joi.object({
 
 const signup = createHandler()
   
-signup.post(validate({body: postSchema}), async (req, res) => {
+signup.post(validate({ body: postSchema }), async (req, res) => {
   try {
     const user = await signupUser(req.body)
     res.status(201).json(user)
