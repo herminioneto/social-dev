@@ -18,13 +18,31 @@ const StyledInput = styled.input`
   background-color: ${props => props.theme.inputBackground};
   padding: 15px 20px;
   border-radius: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
+  ${props => props.error && `border: 2px solid ${props.theme.error}`}
 `
 
-const Input = forwardRef(({ label, ...props }, ref) => {
+const ErrorLabel = styled.span`
+  color: ${props => props.theme.error};
+  font-weight: bold;
+  font-size: 14px;
+`
+
+const errorMessage = {
+  'string.empty': 'Este campo é obrigatório.',
+  'string.email': 'Digite um e-mail válido'
+}
+
+const Input = forwardRef(({ label, error, ...props }, ref) => {
   return (
     <InputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput placeholder={label} {...props} ref={ref} />
+      <StyledInput placeholder={label} error={error} {...props} ref={ref} />
+      {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </InputContainer>
   )
 })

@@ -8,11 +8,16 @@ const Button = styled.button`
   color: ${props => props.theme.white};
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
   transition: all 0.3s;
+
+  ${props => !props.disabled && 'cursor: pointer;'}
 
   :hover {
     background-color: ${props => props.theme.primaryHover};
+  }
+
+  :disabled {
+    background-color: ${props => props.theme.disabled};
   }
 `
 
