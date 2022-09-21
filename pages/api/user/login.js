@@ -6,11 +6,7 @@ import validate from "../../../lib/middlewares/validation"
 import { ironConfig } from "../../../lib/middlewares/ironSession"
 
 import { login } from "../../../modules/user/user.service"
-
-const loginSchema = Joi.object({
-  userOrEmail: Joi.string().required(),
-  password: Joi.string().required()
-})
+import { loginSchema } from "../../../modules/user/userSchema"
 
 const handler = createHandler()
 
@@ -26,8 +22,7 @@ handler.post(validate({ body: loginSchema }), async (req, res) => {
 
     res.send({ ok: true })
   } catch (err) {
-    console.error(err)
-    throw err
+    return res.status(400).send(err.message)
   }
 })
 
