@@ -40,7 +40,6 @@ const PostContainer = styled.div`
 `
 
 function HomePage ({ user }) {
-  console.log(user)
   return (
     <>
       <Navbar />
