@@ -9,6 +9,10 @@ const Textarea = styled.textarea`
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+
+  :focus {
+    outline: none;
+  }
 `
 
 export default Textarea
