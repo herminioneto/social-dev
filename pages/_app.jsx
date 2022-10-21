@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import Head from "next/head"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import moment from "moment"
 import "moment/locale/pt-br"
@@ -37,10 +38,15 @@ function App ({ Component, pageProps }) {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Social Dev</title>
+      </Head>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   )
 }
 
