@@ -1,15 +1,10 @@
 import { useForm } from "react-hook-form"
 import { joiResolver } from "@hookform/resolvers/joi"
 import axios from "axios"
-import styled from "styled-components"
 
 import ControlledTextarea from "../inputs/ControlledTextarea"
 import Button from "../inputs/Button"
 import { createPostSchema } from "../../../modules/post/post.schema"
-
-const EditButton = styled(Button)`
-  margin-top: 10px;
-`
 
 const EditPost = ({ id, text, onSave }) => {
   const { control, handleSubmit, formState: { isValid } } = useForm({
@@ -43,7 +38,7 @@ const EditPost = ({ id, text, onSave }) => {
         maxLength="256"
         defaultValue={text}
       />
-      <EditButton disabled={!isValid}>Salvar Alterações</EditButton>
+      <Button disabled={!isValid}>Salvar Alterações</Button>
     </form>
   )
 }
