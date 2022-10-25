@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
@@ -36,8 +37,11 @@ function SignUpPage () {
     resolver: joiResolver(signupSchema)
   })
 
+  const [loading, setLoading] = useState(false)
+
   const handleForm = async (data) => {
     try {
+      setLoading(true)
       const { status } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`, data)
       if (status === 201) {
         router.push('/')
@@ -48,6 +52,8 @@ function SignUpPage () {
           type: 'duplicated'
         })
       }
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -64,7 +70,7 @@ function SignUpPage () {
           <Input label="E-mail" type="email" name="email" control={control} />
           <Input label="Senha" type="password" name="password" control={control} />
 
-          <Button type="submit" disabled={Object.keys(errors).length > 0}>Criar conta</Button>
+          <Button loading={loading} type="submit" disabled={Object.keys(errors).length > 0}>Criar conta</Button>
         </Form>
         <Text>Já possui uma conta? <Link href="/login">Faça login!</Link></Text>
       </FormContainer>
